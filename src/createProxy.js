@@ -11,7 +11,8 @@ const localServerPlugins = [
 ]
 
 const proxyPlugins = [
-  require('./Plugins/ChatCommands')
+  require('./Plugins/ChatCommands'),
+  require('./Plugins/ServerMessages')
 ]
 
 /**

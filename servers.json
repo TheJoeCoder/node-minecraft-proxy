@@ -1,12 +1,12 @@
 {
-  mainserver: {
-    host: "192.168.0.40",
-    port: 25565,
-    isDefault: true,
-    isFallback: true
+  "mainserver": {
+    "host": "192.168.0.40",
+    "port": 25565,
+    "isDefault": true,
+    "isFallback": true
   },
-  local: {
-    host: "localhost",
-    port: 25565
+  "local": {
+    "host": "localhost",
+    "port": 25565
   }
 }
