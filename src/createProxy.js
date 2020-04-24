@@ -11,7 +11,7 @@ const localServerPlugins = [
 ];
 
 const proxyPlugins = [
-  requireDir('./Plugins');
+  requireDir('./Plugins')
 ];
 
 /**
