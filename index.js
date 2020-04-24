@@ -1,34 +1,13 @@
 const MCProxy = require('./src/index.js');
 
-let localServerOptions = {
-  'port': '25578',
-  'version': '1.12.2',
-  'online-mode': false,
-  'motd': 'nodejs minecraft proxy'
-}
+let localServerOptions = require('./options.json');
 
-let serverList = {
-  hub: {
-    host: 'localhost',
-    port: 25565,
-    isDefault: true,
-    isFallback: true
-  },
-  minigames: {
-    host: 'localhost',
-    port: 25566
-  }
-}
+let serverList = require('./servers.json');
 
 let proxyOptions = {
   enablePlugins: true
 }
 
-/*
-  Use the "/server <serverName>" command in chat to move between servers.
-  <serverName> is the name that you chose for the server inside the serverList
-  This command is implemented by /src/Plugins/ChatCommands.js and it can be disabled by setting enablePlugin: false inside proxyOptions
-*/
 let proxy = MCProxy.createProxy(localServerOptions, serverList, proxyOptions);
 
 proxy.on('error', console.error);
@@ -36,3 +15,4 @@ proxy.on('error', console.error);
 proxy.on('listening', () => {
   console.info('Listening!');
 });
+ 

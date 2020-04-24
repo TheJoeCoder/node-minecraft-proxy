@@ -1,0 +1,6 @@
+{
+  'port': '25578',
+  'version': '1.12.2',
+  'online-mode': false,
+  'motd': 'nodejs minecraft proxy'
+}
