@@ -10,10 +10,10 @@ const localServerPlugins = [
   require(path.join(mcProtocolPath, '../server/ping'))
 ];
 
-const proxyPlugins = {
+const proxyPlugins = [
   require('./Plugins/ChatCommands'),
   require('./Plugins/ServerMessages')
-};
+];
 
 /**
  * Create a new proxy
