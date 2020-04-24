@@ -20,8 +20,9 @@ let serverList = {
   }
 }
 
-// if you leave proxyOptions empty yo may as well not pass it in the arguments, I wrote it anyway to point out that it exist
-let proxyOptions = {}
+let proxyOptions = {
+  enablePlugins: true
+}
 
 /*
   Use the "/server <serverName>" command in chat to move between servers.
