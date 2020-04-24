@@ -4,11 +4,9 @@ Simple Minecraft proxy written in Node.js using the node-minecraft-protocol libr
 
 - [node-minecraft-proxy](#node-minecraft-proxy)
   - [Features](#features)
-  - [Installation](#installation)
   - [Examples](#examples)
     - [Creating a proxy](#creating-a-proxy)
     - [Moving players from a server to another](#moving-players-from-a-server-to-another)
-  - [Documentation](#documentation)
 
 ## Features
 
@@ -17,13 +15,6 @@ Simple Minecraft proxy written in Node.js using the node-minecraft-protocol libr
 - Change server
 - Basic plugin support, see `./src/Plugins/ChatCommands.js` for an example
 
-## Installation
-
-`npm install basic-minecraft-proxy`
-
-## Examples
-
-See also `./examples/` for other examples
 
 ### Creating a proxy
 
@@ -81,6 +72,3 @@ proxy.on('login', (player) => {
 });
 ```
 
-## Documentation
-
-See the [wiki](https://github.com/7ixi0/node-minecraft-proxy/wiki).
