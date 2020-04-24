@@ -1,19 +1,18 @@
-const NodeRSA = require('node-rsa')
-const path = require('path')
-
-const Proxy = require('./Proxy')
+const NodeRSA = require('node-rsa');
+const path = require('path');
+const requireDir = require('require-dir');
+const Proxy = require('./Proxy');
 
 const mcProtocolPath = require.resolve('minecraft-protocol')
 const localServerPlugins = [
   require(path.join(mcProtocolPath, '../server/handshake')),
   require(path.join(mcProtocolPath, '../server/login')),
   require(path.join(mcProtocolPath, '../server/ping'))
-]
+];
 
 const proxyPlugins = [
-  require('./Plugins/ChatCommands'),
-  require('./Plugins/ServerMessages')
-]
+  requireDir('./Plugins');
+];
 
 /**
  * Create a new proxy
@@ -31,38 +30,38 @@ function createProxy (localServerOptions = {}, serverList = {}, proxyOptions = {
     version,
     favicon,
     customPackets
-  } = localServerOptions
+  } = localServerOptions;
 
   const {
     enablePlugins = true
-  } = proxyOptions
+  } = proxyOptions;
 
-  const optVersion = version === undefined || version === false ? require(path.join(mcProtocolPath, '../version')).defaultVersion : version
+  const optVersion = version === undefined || version === false ? require(path.join(mcProtocolPath, '../version')).defaultVersion : version;
 
-  const mcData = require('minecraft-data')(optVersion)
-  const mcversion = mcData.version
+  const mcData = require('minecraft-data')(optVersion);
+  const mcversion = mcData.version;
 
   const serverOptions = {
     version: mcversion.minecraftVersion,
     customPackets: customPackets
-  }
+  };
 
-  const proxy = new Proxy(serverOptions, serverList, proxyOptions)
-  proxy.mcversion = mcversion
-  proxy.motd = motd
-  proxy.maxPlayers = maxPlayers
-  proxy.playerCount = 0
-  proxy.onlineModeExceptions = {}
-  proxy.favicon = favicon
-  proxy.serverKey = new NodeRSA({b: 1024})
+  const proxy = new Proxy(serverOptions, serverList, proxyOptions);
+  proxy.mcversion = mcversion;
+  proxy.motd = motd;
+  proxy.maxPlayers = maxPlayers;
+  proxy.playerCount = 0;
+  proxy.onlineModeExceptions = {};
+  proxy.favicon = favicon;
+  proxy.serverKey = new NodeRSA({b: 1024});
 
   proxy.on('connection', function (client) {
-    localServerPlugins.forEach((plugin) => plugin(client, proxy, localServerOptions, proxyOptions))
-    if (enablePlugins) proxyPlugins.forEach((plugin) => plugin(client, proxy, localServerOptions, proxyOptions))
-  })
+    localServerPlugins.forEach((plugin) => plugin(client, proxy, localServerOptions, proxyOptions));
+    if (enablePlugins) proxyPlugins.forEach((plugin) => plugin(client, proxy, localServerOptions, proxyOptions));
+  });
 
-  proxy.listen(port, host)
-  return proxy
+  proxy.listen(port, host);
+  return proxy;
 }
 
-module.exports = createProxy
+module.exports = createProxy;
