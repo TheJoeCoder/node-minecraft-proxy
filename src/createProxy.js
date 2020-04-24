@@ -3,7 +3,7 @@ const path = require('path');
 const requireDir = require('require-dir');
 const Proxy = require('./Proxy');
 
-const mcProtocolPath = require.resolve('minecraft-protocol')
+const mcProtocolPath = require.resolve('minecraft-protocol');
 const localServerPlugins = [
   require(path.join(mcProtocolPath, '../server/handshake')),
   require(path.join(mcProtocolPath, '../server/login')),
