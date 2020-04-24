@@ -3,7 +3,7 @@ mainserver: {
   port: 25565,
   isDefault: true,
   isFallback: true
-}
+},
 local: {
   host: "localhost",
   port: 25565
