@@ -1,4 +1,4 @@
-const MCProxy = require('./src/index.js');
+const MCProxy = require('./src/index');
 
 let localServerOptions = require('./options.json');
 
@@ -15,4 +15,3 @@ proxy.on('error', console.error);
 proxy.on('listening', () => {
   console.info('Listening!');
 });
- 
